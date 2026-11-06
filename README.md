@@ -1,5 +1,5 @@
 # Meandros
-Meandros  
+Meandros is a horror rogue-like exploratory labyrinth game. 
 
 # Group Members
 Ryan Haigh   
