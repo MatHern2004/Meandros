@@ -4,9 +4,9 @@
 # Group Members
 Ryan Haigh  
 Mathew Hernandez  
-Member   
-Member  
-Member  
+Josh Sindelar
+Zach Stroozas
+Spencer Van Rossum
 
 # Current Target
 Description  
@@ -14,8 +14,8 @@ Description
 # Goals/Roles for Each Team Member
 Ryan Haigh:  
 Mathew Hernandez:  
-Member:  
-Member:  
-Member:  
+Josh Sindelar:  
+Zach Stroozas:  
+Spencer Van Rossum:  
 
 **Video Link:**
