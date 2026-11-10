@@ -17,7 +17,7 @@ General Flow: Player begins within the labyrinth and must explore the maze until
 **Ryan Haigh:** Potential Map Generaton  
 **Mathew Hernandez:** Player Movement and Sound Design     
 **Josh Sindelar:** User Interface  
-**Zach Stroozas: **Upgrades   
+**Zach Stroozas:** Upgrades   
 **Spencer Van Rossum:** Enemies / Jump Scares with Basic Animation   
 
 **Video Link:**
