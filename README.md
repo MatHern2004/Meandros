@@ -14,10 +14,10 @@ The Title Screen will be created. Player movement will be created allowing the p
 General Flow: Player begins within the labyrinth and must explore the maze until they reach a ladder that lets them raise another floor. The goal is to escape the underground labyrinth before being defeated by an enemy. Throughout their exploratory journey, they'll be able to find items and encounter enemies that may attempt to harm them. If time prevails, we'd like to get some shop available for the player to shop with. 
 
 # Goals/Roles for Each Team Member
-Ryan Haigh: Potential Map Generaton  
-Mathew Hernandez: Player Movement and Sound Design     
-Josh Sindelar: User Interface  
-Zach Stroozas: Upgrades   
-Spencer Van Rossum: Enemies / Jump Scares with Basic Animation   
+**Ryan Haigh:** Potential Map Generaton  
+**Mathew Hernandez:** Player Movement and Sound Design     
+**Josh Sindelar:** User Interface  
+**Zach Stroozas: **Upgrades   
+**Spencer Van Rossum:** Enemies / Jump Scares with Basic Animation   
 
 **Video Link:**
