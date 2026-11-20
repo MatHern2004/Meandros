@@ -20,8 +20,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float lookSensitivty = 0.2f;
     // To create clamping
     [SerializeField] private float maxLookAngle = 90.0f;
-    // Bool for determining if the player pressed button to jump
+    // Audio array used to randomize footsteps of the player
     [SerializeField] private AudioClip[] footSteps;
+    // Audio array used to randomize grunts of the player
+    [SerializeField] private AudioClip[] jumpGrunts;
+    // Audio used for when the player jumps
+    [SerializeField] private AudioClip jump;
+    // Audio used for when the player jumps;
+    [SerializeField] private AudioClip clothes;
     // Amount of time needed per footstep
     private float stepTimer = 0.0f;
     // Minimum movement speed needed to play foostep
@@ -30,11 +36,14 @@ public class PlayerController : MonoBehaviour
     private const float minRunSpeed = 6.0f;
     // If the jump button was pressed
     bool jumpPressed = false;
+    // Class to used for animator
+    [SerializeField] private Animator animator;
 
     // Camera for player vision
     private Camera mainCamera;
     // For player controller
     private CharacterController characterController; 
+
     // Reference to player inputs
 
     // Player walking input
@@ -127,8 +136,16 @@ public class PlayerController : MonoBehaviour
 
         // If the player jumped and they are grounded
         if (jumpPressed && characterController.isGrounded)
+        {
             // Update their y value to include their jump height
             moveDirection.y = jumpHeight;
+            // Play a random grunt that the player could have when they jump
+            AudioManager.instance.PlayRandomSoundEffecsClip(jumpGrunts, transform, 0.5f);
+            // Play a random jump sound
+            AudioManager.instance.PlaySoundEffecsClip(jump, transform, 1);
+            // Play clothes rustling sound
+            AudioManager.instance.PlaySoundEffecsClip(clothes, transform, 0.25f);
+        }    
         else
             // Else keep the old y value
             moveDirection.y = oldY;
@@ -160,6 +177,8 @@ public class PlayerController : MonoBehaviour
         // While the character is walking either forward/backwards or left/right
         else if (characterController.isGrounded && (Math.Abs(newSpeed.x) > minWalkSpeed || Math.Abs(newSpeed.y) > minWalkSpeed))
         {
+            // Play the character's walking animation
+            animator.SetBool("isWalking", true);
             if (stepTimer <= 0f)
             {
                 // Randomly play one of the footstep sound effects every time this is called
@@ -170,7 +189,12 @@ public class PlayerController : MonoBehaviour
         }
          // Else don't play it
         else
+        {
             stepTimer = 0.0f;
+            // Stop playing the walking animation
+            animator.SetBool("isWalking", false);
+        }
+
     }
 
     // Change the bool to true if the Input for jump was made
