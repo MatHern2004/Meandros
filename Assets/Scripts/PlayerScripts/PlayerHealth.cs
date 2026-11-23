@@ -40,7 +40,6 @@ public class PlayerHealth : MonoBehaviour
         
     }
 
-
     // Function used for when the player takes damage
     void TakeDamage()
     {
