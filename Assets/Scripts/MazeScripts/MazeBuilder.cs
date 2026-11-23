@@ -57,6 +57,7 @@ public class MazeBuilder : MonoBehaviour
 
     [Header("Spawn points")]
     [SerializeField] float playerSpawnHeight = 1f;
+    [SerializeField] Transform playerToSpawn;
 
     public MazeData Data { get; private set; }
     public int CurrentSeed { get; private set; }
@@ -97,6 +98,7 @@ public class MazeBuilder : MonoBehaviour
         MeasurePieces();
         Build();
         CreateSpawnPoints(MazeSpawnPlanner.Plan(Data, settings, seed));
+        SpawnPlayer();
 
         IsBuilt = true;
         MazeBuilt?.Invoke(this);
@@ -303,6 +305,20 @@ public class MazeBuilder : MonoBehaviour
     }
 
     // ===== Spawn points
+
+    void SpawnPlayer()
+    {
+        if (playerToSpawn == null) return;
+
+        MazeSpawnPoint playerStart = GetFirst(SpawnType.PlayerStart);
+        if (playerStart == null)
+        {
+            Debug.LogError("Maze has no PlayerStart spawn point.", this);
+            return;
+        }
+
+        playerToSpawn.SetPositionAndRotation(playerStart.transform.position, playerStart.transform.rotation);
+    }
 
     void CreateSpawnPoints(List<SpawnPointInfo> infos)
     {
