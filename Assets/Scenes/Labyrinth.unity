@@ -601,6 +601,7 @@ GameObject:
   - component: {fileID: 928585644}
   - component: {fileID: 928585647}
   - component: {fileID: 928585646}
+  - component: {fileID: 928585648}
   m_Layer: 0
   m_Name: FirstPersonPlayer
   m_TagString: Player
@@ -705,6 +706,29 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &928585648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 928585643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baf70667a9ac77f4498959cda9092b81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
+  Health: 100
+  weakDamage: 10
+  normalDamage: 25
+  heavyDamge: 40
+  smallHealing: 25
+  nomralHealing: 50
+  largeHealing: 75
+  hurtSounds: []
+  criticalDamage: {fileID: 0}
+  smallHeal: {fileID: 0}
+  bigHeal: {fileID: 0}
 --- !u!1 &1229218223
 GameObject:
   m_ObjectHideFlags: 0
