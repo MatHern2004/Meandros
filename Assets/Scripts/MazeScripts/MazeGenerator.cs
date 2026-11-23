@@ -15,21 +15,20 @@ public static class MazeGenerator
         var rng = new System.Random(seed);
         var maze = new MazeData(s.width, s.height);
 
-        //CarvePassages(maze, rng);
-        //Braid(maze, rng, s.braidChance);
-        
         maze.Start = new Vector2Int(0, 0);
+        CarvePassages(maze, rng, maze.Start);
+        Braid(maze, rng, s.braidChance);
         maze.ComputeDistances(maze.Start);
-        
-        //PlaceSpecialRooms(maze, rng, s);
+        PlaceSpecialRooms(maze, rng, s);
+
         return maze;
     }
 
     // First Step
-    static void CarvePassages(MazeData maze, System.Random rng)
+    static void CarvePassages(MazeData maze, System.Random rng, Vector2Int start)
     {
         var stack = new Stack<MazeCell>();
-        var first = maze.Cells[rng.Next(maze.Width), rng.Next(maze.Height)];
+        var first = maze.Get(start);
         first.Visited = true;
         stack.Push(first);
         int[] dirs = {0, 1, 2, 3};

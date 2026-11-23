@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db4a98438d0762b43b6bee4a028c837d, type: 3}
+  m_Name: DefaultLootTable
+  m_EditorClassIdentifier: Assembly-CSharp::UpgradeLootTable
+  upgrades:
+  - {fileID: 11400000, guid: 329383ac75afc3a43a34a166e8ec5acf, type: 2}
+  - {fileID: 11400000, guid: 4a7ab7803e7208b49bde70ff5587e6a7, type: 2}
+  - {fileID: 11400000, guid: 04b50291f11c3e24eaed581da09911aa, type: 2}
+  - {fileID: 11400000, guid: bfd9a3d4fd7c07149b74270e6966b566, type: 2}
+  - {fileID: 11400000, guid: fddd915fa3945e94aa8f33ffe0a6f588, type: 2}
+  - {fileID: 11400000, guid: f1e3927015630ca419fff2f14ef3596f, type: 2}
+  - {fileID: 11400000, guid: db73ea73931a94347a7c59e3e8b20a49, type: 2}
+  curses:
+  - {fileID: 11400000, guid: 9954da4b34196024bb56d1ae37ca7e00, type: 2}
+  - {fileID: 11400000, guid: 7c5faaaf950150649be681a58dcc4dfb, type: 2}
+  - {fileID: 11400000, guid: 052f21b9ea9f2cf439a7b3ca7ba58507, type: 2}
