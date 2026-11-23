@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine; // For basic unity functionality
 using UnityEngine.InputSystem; // For obtaining functions related to the modern Input System
 using UnityEngine.TextCore.Text; // Stylizing for text
@@ -98,16 +99,46 @@ public class PlayerController : MonoBehaviour
         // For any changes on both the x and y axis for my mouse on the previous frame, read my mouse value
         Vector2 mouseVector = new Vector2(Mouse.current.delta.x.ReadValue(), Mouse.current.delta.y.ReadValue());
 
+        // If the plater is attempting to move, start the animator
+        if (moveVector.x > 0 || moveVector.y > 0)
+            animator.SetBool("isWalking", true);
+        // Else if they are walking, set to false
+        else
+            animator.SetBool("isWalking", false);
+
         // If the character leaves the ground, don't let the player jump more
         if (!characterController.isGrounded)
+        {
             jumpPressed = false;
+            // Set the falling variable to true
+            animator.SetBool("isFalling", true);
+        }
+        // Set the falling variable to false
+        else
+            animator.SetBool("isFalling", false);
+
+        
+        // If the jump is not pressed stop jumping
+        if (jumpPressed == false)
+            animator.SetBool("isJumping", false);
+        
 
         // If the running button was pressed, update the speed before moving
         if (runInput.IsPressed())
+        {
+            // Increase the speed
             currentMovementSpeed = runSpeed;
+            // Set the player to run quickly
+            animator.SetBool("isRunning", true);
+        }
+
         // If it wasn't presssed
         else
+        {
+            // Get the current walk speed
             currentMovementSpeed = walkSpeed;
+            animator.SetBool("isRunning", false);
+        } 
 
         // Once the value is obtained translate the movement through this function
         HandleMovement(moveVector);
@@ -158,6 +189,7 @@ public class PlayerController : MonoBehaviour
         // Now let the characterController receieve this updated movement and multiply it after each frame's time
         characterController.Move(moveDirection * Time.deltaTime);
 
+
         // Footstep sound effect timer between each step is subtracted by the deltaTime
         stepTimer -= Time.deltaTime;
 
@@ -177,10 +209,10 @@ public class PlayerController : MonoBehaviour
         // While the character is walking either forward/backwards or left/right
         else if (characterController.isGrounded && (Math.Abs(newSpeed.x) > minWalkSpeed || Math.Abs(newSpeed.y) > minWalkSpeed))
         {
-            // Play the character's walking animation
-            animator.SetBool("isWalking", true);
+            // Check if the steptimer has been passed already
             if (stepTimer <= 0f)
             {
+                // Walking animation, set this to true if this occurs
                 // Randomly play one of the footstep sound effects every time this is called
                 AudioManager.instance.PlayRandomSoundEffecsClip(footSteps, transform, 1);
                 // Increment time between each sound
@@ -192,7 +224,6 @@ public class PlayerController : MonoBehaviour
         {
             stepTimer = 0.0f;
             // Stop playing the walking animation
-            animator.SetBool("isWalking", false);
         }
 
     }
@@ -202,6 +233,8 @@ public class PlayerController : MonoBehaviour
     {
         // If this function was called, make sure the InputSystem knows the player jumped
         jumpPressed = true;
+
+        animator.SetBool("isJumping", true);  
     }
 
     // Change the camera to look in the direction the player is looking or move the entire player depending on the
